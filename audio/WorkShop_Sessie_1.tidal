@@ -1,0 +1,118 @@
+-- Welkom
+--Demo
+d1 $ sound "gabba*4" # gain "0.8 0.7 0.8 0.7"
+
+d2 $ swingBy (1/2) 4 $ sound "hh*16" # gain "0.9"
+
+d3 $ randslice 25 $ sound "MDroneHA" # vowel "a e" # gain "0.8"
+
+d4 $ sound "~ ~ sd ~" # gain "0.8"
+
+d5 $ sound "realclaps ~ realclaps ~"
+
+d6 $ n "[ a4(5,6) c3(5,6) g3(5,6)]/2" # sound "juno" # vowel "e" # room 0.8 # sz 0.95
+# orbit 1 # lpf (range 2000 8000 $ slow 2 $ sine) # resonance (range 0.3 0.6 $ slow 2 $ sine)
+# pan (range 0.4 0.8 $ rand) # gain 0.6
+
+xfade 7 $ sound "arpy:3*6" # gain "1 0.9"
+
+hush
+
+--Stilte
+
+d1 silence
+
+
+--Tempo
+
+setcps (140/120)
+
+
+--Eerste Geluid
+d1 $ sound "arpy"
+
+-- 1 Geluid
+d1 $ sound "arpy*4"
+
+hush
+
+--Meerdere geluiden
+d1 $ sound "bd arpy bd arpy"
+
+
+-- Meerdere geluiden -> verschillende kanalen
+d1 $ sound "bd*4"
+
+d2 $ sound "arpy arpy"
+
+--BestandsIndeling
+d1 $ sound "bd:3*4"
+
+-- Rust
+d1 $ sound "bd bd ~ bd"
+
+--Samples harmonisch spelen
+d1 $ up "0 1 2 3 4 5 6 7 8 9 10 11" # sound "arpy"
+
+-- Lnage Samples
+d2 $ randslice 32 $ sound "MDroneHA" # legato "1"
+
+d3 $ sound "padlong" # cut "4"
+
+
+hush
+
+--EXTRA
+--Pattern in a Pattern
+d1 $ sound "bd [arpy sd sd]"
+
+-- 1 Step per cycle
+d1 $ sound "bd <arpy:1 arpy:2 arpy:3>"
+
+--
+
+
+
+-- Transitions
+xfade 1 $ sound "bd*4"
+
+-- Every
+d1 $ every 4 $ sound "sd:1"
+
+hush
+
+--Effects
+--Crush
+d1 $ sound "bd arpy bd arpy" # crush "4"
+
+-- Gain (0 -> 1)
+d1 $ sound d1 $ sound "bd arpy bd arpy" # gain "0.8"
+
+-- Pan (0 - > 1)
+d1 $ sound "bd arpy bd arpy" # pan "1"
+
+--vowel (a, e ,i ,o u)
+d1 $ sound "bd arpy bd arpy" # vowel "a"
+
+--Speed --> Platenspeler
+d1 $ sound "bd arpy bd arpy" # speed "0.5"
+
+-- Reverb
+d1 $ sound "arpy" # room 0.8 # sz 0.95 # orbit 1 # delay 0.7
+
+-- Delay
+d1 $ sound "arpy*4" # delay 0.7
+
+
+
+-- EFfects values
+-- Meeerdere values
+d1 $ sound "arpy arpy arpy arpy" # vowel "a e u o"
+
+
+
+-- Sine/Square
+d1 $ sound "bd arpy bd arpy" # pan sine
+
+-- Extra -> Breaks
+d1 $ sound "breaks165"
