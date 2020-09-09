@@ -1,0 +1,52 @@
+-- Workshop Sessie 2 -> Intermediate concepten
+
+
+-- every
+
+d1 $ every 3 rev $ n "0 1 2 3 4 5" # sound "arpy"
+
+hush
+
+
+-- run
+
+d1 $ up (run 12) # sound "arpy"
+
+hush
+
+-- Selecting Samples
+d1 $ sound "juno:0 juno:1 juno:2 juno:3"
+
+d1 $ n "0 1 2 3" # s "juno"
+
+d1 $ n (run 4) # sound "juno"
+
+
+
+-- Randomness
+d1 $ sound "juno*4" # n (irand 8)
+
+d1 $ sound "bd*8" # pan rand
+
+-- Chance
+d1 $ sound "bd? arpy? sd? arpy?"
+
+d1 $ sometimesBy 0.75 (# crush 4) $ sound "arpy*4"
+
+
+
+-- House Template
+
+setcps (126/60/4)
+
+d1 $ sound "house:0*4"
+
+d2 $ swingBy (1/2) 4 $ sound "hh*16" # gain "0.9 1 0.9 1"
+
+d3 $ sound "~ house:4 ~ house:4" # gain "0.9"
+
+d4 $ sound "house:5 ~ [house:5 house:5]" # vowel "a e a e" # room 0.7 # sz 0.8 # orbit 1 # gain "0.8"
+
+d5 $ sound "house:7 ~ ~ ~ ~" # gain "0.8"
+
+d6 $ sound " ~ house:2"
